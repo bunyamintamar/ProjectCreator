@@ -1,0 +1,99 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+    then
+    echo
+    echo "ERROR: No arguments supplied !"
+    echo
+    echo "EXAMPLE: ./createTest test_hello  // without suffix"
+    echo
+    exit
+fi
+
+if [ -d "${@}/" ]
+    then
+    echo
+    echo ${@}' folder is already existed !'
+    echo
+    exit
+    sleep 2
+fi
+
+#### make project folder
+mkdir ${@} && cd ${@}
+
+#### CMake
+echo '
+######### CMAKE VERSION ########################
+cmake_minimum_required(VERSION 3.16)
+set(This '${@}')
+
+######### PROJECT NAME #########################
+project(${This} C CXX)
+
+######### SOURCES ##############################
+file(GLOB SOURCES "'${@}'.cpp")
+                  #"../<USER_FOLDER>/*cpp")
+
+######### OTHERS ###############################
+add_executable(${This} ${SOURCES})
+
+######### LIBRARIES ############################
+target_link_libraries(${This} PUBLIC
+    gtest     # MUST BE ADDED
+    gmock     # MUST BE ADDED
+    pthread   # MUST BE ADDED
+)' > CMakeLists.txt
+echo  'CMakeLists.txt created'
+
+
+#### builder
+echo '
+#!/bin/bash
+
+# remove old build_'${@}' folder
+if [ -d build_'${@}' ]
+    then
+    rm -r build_'${@}'
+    echo silindi
+    sleep 4
+fi
+
+# make new build_'${@}' folder
+mkdir build_'${@}' && cd build_'${@}'
+
+# build
+cmake .. && make clean && make
+
+# move '${@}' and remove build_'${@}' folder
+cd .. && mv build_'${@}'/'${@}' . && rm -r build_'${@}'
+
+# run '${@}'
+./'${@}'
+' > build_${@}.sh
+chmod +x build_${@}.sh
+echo  'build_'${@}'.sh created'
+
+
+#### test file
+echo '
+#include <gtest/gtest.h>
+#include <gmock/gmock.h>
+
+//#include "<USER_HEADER>"
+
+TEST(TestFixture, test_1)
+{
+    EXPECT_TRUE(false);
+}
+
+
+int main(int argc, char **argv)
+{
+    testing::InitGoogleTest(&argc, argv);
+    //testing::GTEST_FLAG(filter) = "";
+    return RUN_ALL_TESTS();
+}
+' > ${@}.cpp
+echo  ${@}.cpp created
+echo
