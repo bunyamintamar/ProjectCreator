@@ -55,8 +55,6 @@ echo '
 if [ -d build_'${@}' ]
     then
     rm -r build_'${@}'
-    echo silindi
-    sleep 4
 fi
 
 # make new build_'${@}' folder
