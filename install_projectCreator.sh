@@ -30,7 +30,7 @@ echo  '
 #!/bin/bash
 rm -r ${@}
 ' > /tmp/delete_intaller_for_ProjectCreator
-chmod +x delete_intaller_for_ProjectCreator
+sudo  chmod +x delete_intaller_for_ProjectCreator
 
 echo  '--------------------------------------------------------------------'
 echo  '|  written by BUNYAMIN TAMAR                                       |'
@@ -41,4 +41,4 @@ echo  '--------------------------------------------------------------------'
 echo  'good luck!'
 echo
 
-/tmp/delete_intaller_for_ProjectCreator `pwd` & exit
+sudo /tmp/delete_intaller_for_ProjectCreator `pwd` & exit
