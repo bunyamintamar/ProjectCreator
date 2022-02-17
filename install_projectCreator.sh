@@ -25,6 +25,13 @@ echo  '--------------------------------------------------------------------'
 echo  'createCppProject and createTest is copied to /usr/bin'
 echo  '--------------------------------------------------------------------'
 echo
+
+echo  '
+#!/bin/bash
+rm -r ${@}
+' > /tmp/delete_intaller_for_ProjectCreator
+chmod +x delete_intaller_for_ProjectCreator
+
 echo  '--------------------------------------------------------------------'
 echo  '|  written by BUNYAMIN TAMAR                                       |'
 echo  '|  Mail     : bunyamintamar@yandex.com                             |'
@@ -33,3 +40,5 @@ echo  '|  Linkedin : https://www.linkedin.com/in/bunyamintamar            |'
 echo  '--------------------------------------------------------------------'
 echo  'good luck!'
 echo
+
+/tmp/delete_intaller_for_ProjectCreator `pwd` & exit
