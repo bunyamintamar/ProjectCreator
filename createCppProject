@@ -31,9 +31,13 @@ set(This '${@}')
 ######### PROJECT NAME #########################
 project(${This} C CXX)
 
+######### FOLDERS ##############################
+#include_directories(<USER_FOLDER>)
+
 ######### SOURCES ##############################
-file(GLOB SOURCES "'${@}'.cpp")
-                  #"../<USER_FOLDER>/*cpp")
+file(GLOB SOURCES "'${@}'.cpp"
+                  #"../<USER_FOLDER>/*cpp"
+)
 
 ######### OTHERS ###############################
 add_executable(${This} ${SOURCES})
@@ -43,13 +47,13 @@ target_link_libraries(${This} PUBLIC
     gtest     # MUST BE ADDED
     gmock     # MUST BE ADDED
     pthread   # MUST BE ADDED
-)' > CMakeLists.txt
+)
+' > CMakeLists.txt
 echo  'CMakeLists.txt created'
 
 
 #### builder
 echo '
-
 #!/bin/bash
 
 #######################################################################################

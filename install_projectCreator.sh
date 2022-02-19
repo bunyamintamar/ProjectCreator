@@ -26,11 +26,11 @@ echo  'createCppProject and createTest is copied to /usr/bin'
 echo  '--------------------------------------------------------------------'
 echo
 
-echo  '
+sudo  echo '
 #!/bin/bash
-rm -r ${@}
+sudo rm -r ${@}
 ' > /tmp/delete_intaller_for_ProjectCreator
-sudo  chmod +x delete_intaller_for_ProjectCreator
+sudo  chmod +x /tmp/delete_intaller_for_ProjectCreator
 
 echo  '--------------------------------------------------------------------'
 echo  '|  written by BUNYAMIN TAMAR                                       |'
