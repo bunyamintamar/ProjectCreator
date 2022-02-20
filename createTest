@@ -50,8 +50,8 @@ target_link_libraries(${This} PUBLIC
 )
 
 ################################################
-Created automatically
-GitHub   : https://github.com/bunyamintamar/ProjectCreator.git
+# Created automatically
+# GitHub   : https://github.com/bunyamintamar/ProjectCreator.git
 ' > CMakeLists.txt
 echo  'CMakeLists.txt created'
 
@@ -108,8 +108,8 @@ else
 fi
 
 #######################################################################################
-Created automatically
-GitHub   : https://github.com/bunyamintamar/ProjectCreator.git
+# Created automatically
+# GitHub   : https://github.com/bunyamintamar/ProjectCreator.git
 ' > build_${@}.sh
 chmod +x build_${@}.sh
 echo  'build_'${@}'.sh created'
