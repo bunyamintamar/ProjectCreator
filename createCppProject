@@ -103,8 +103,10 @@ if [ -e '${@}' ]
     then
     ./'${@}'
     echo && echo 'BUILDED SUCCESSFULY' && echo
+    /opt/playSuccess/playSuccess.sh
 else
     echo && echo 'UNSUCCESSFULY !!!' && echo
+    /opt/playError/playError.sh
 fi
 
 #######################################################################################
