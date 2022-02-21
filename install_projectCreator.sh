@@ -16,25 +16,27 @@ echo  'CMAKE reinstalled'
 echo  '--------------------------------------------------------------------'
 echo
 
-sudo  mkdir /opt/playSuccess
-sudo  cp success.wav /opt/playSuccess/
-sudo  echo '
+mkdir playSuccess
+cp    success.wav playSuccess/
+echo '
 #!/bin/bash
 aplay /opt/playSuccess/success.wav
-' > /opt/playSuccess/playSuccess.sh
-sudo  chmod +x /opt/playSuccess/playSuccess.sh
+' > playSuccess/playSuccess.sh
+chmod +x playSuccess/playSuccess.sh
+sudo  cp -r playSuccess /opt/
 echo  '--------------------------------------------------------------------'
 echo  'success.wav installed'
 echo  '--------------------------------------------------------------------'
 echo
 
-sudo  mkdir /opt/playError
-sudo  cp error.wav /opt/playError/
-sudo  echo '
+mkdir playError
+cp    error.wav playError/
+echo '
 #!/bin/bash
 aplay /opt/playError/error.wav
-' > /opt/playError/playError.sh
-sudo  chmod +x /opt/playError/playError.sh
+' > playError/playError.sh
+chmod +x playError/playError.sh
+sudo  cp -r playError /opt/
 echo  '--------------------------------------------------------------------'
 echo  'error.wav installed'
 echo  '--------------------------------------------------------------------'
