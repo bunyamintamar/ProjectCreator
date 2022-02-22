@@ -101,11 +101,16 @@ cd .. && rm -r build_'${@}'
 
 if [ -e '${@}' ]
     then
+    /opt/playSuccess/playSuccess.sh && clear
+    echo BUILDED SUCCESSFULY
+    echo --------------------------- && echo
+
     ./'${@}'
-    echo && echo 'BUILDED SUCCESSFULY' && echo
-    /opt/playSuccess/playSuccess.sh
+    
+    echo && echo ---------------------------
+    echo FINISHED && echo
 else
-    echo && echo 'UNSUCCESSFULY !!!' && echo
+    echo && echo UNSUCCESSFULY !!! && echo
     /opt/playError/playError.sh
 fi
 
