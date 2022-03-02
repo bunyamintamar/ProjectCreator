@@ -44,9 +44,11 @@ echo
 
 chmod +x createCppProject
 chmod +x createTest
+chmod +x createClass
 
 sudo  cp createCppProject /usr/bin/
 sudo  cp createTest       /usr/bin/
+sudo  cp createClass      /usr/bin/
 echo  '--------------------------------------------------------------------'
 echo  'createCppProject and createTest is copied to /usr/bin'
 echo  '--------------------------------------------------------------------'

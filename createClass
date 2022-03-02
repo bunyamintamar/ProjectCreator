@@ -1,0 +1,49 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+    then
+    echo
+    echo "ERROR: No arguments supplied !"
+    echo
+    echo "EXAMPLE: ./createClass myClass"
+    echo
+    exit
+fi
+
+if [ -e "${@}.h" ]
+    then
+    echo
+    echo ${@}' files are already existed !'
+    echo
+    exit
+    sleep 2
+fi
+
+
+echo '
+#ifndef '${@}'_H
+#define '${@}'_H
+
+class '${@}'
+{
+public:
+    '${@}'();
+    ~'${@}'();
+};
+
+#endif /* '${@}'_H */
+' > ${@}.h
+
+echo '
+#include "'${@}'.h"
+
+'${@}'::'${@}'()
+{
+}
+
+'${@}'::~'${@}'()
+{
+}
+' > ${@}.cpp
+echo ${@}'.h and '${@}'.cpp created'
+echo
