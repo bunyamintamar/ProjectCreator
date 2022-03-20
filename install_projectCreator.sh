@@ -4,7 +4,9 @@ echo  '--------------------------------------------------------------------'
 echo  'WELLCOME TO INSTALLER FOR PROJECT CREATOR'
 echo  '--------------------------------------------------------------------'
 echo
-echo  'createTest and createCppProject will be installed'
+echo  'createTest,'
+echo  'createCppProject,'
+echo  'createBuilder will be installed'
 
 sudo  apt --fix-broken install
 sudo  apt-get update -y
@@ -45,12 +47,14 @@ echo
 chmod +x createCppProject
 chmod +x createTest
 chmod +x createClass
+chmod +x createBuilder
 
 sudo  cp createCppProject /usr/bin/
 sudo  cp createTest       /usr/bin/
 sudo  cp createClass      /usr/bin/
+sudo  cp createBuilder    /usr/bin/
 echo  '--------------------------------------------------------------------'
-echo  'createCppProject and createTest is copied to /usr/bin'
+echo  'Creaters are copied to /usr/bin'
 echo  '--------------------------------------------------------------------'
 echo
 

@@ -1,0 +1,84 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+    then
+    echo
+    echo "ERROR: No arguments supplied !"
+    echo
+    echo "EXAMPLE: ./createBuilder hello  // without suffix"
+    echo
+    exit
+fi
+
+if [ -e build_${@}.sh ]
+    then
+    echo
+    echo 'build_'${@}'.sh is already existed !'
+    echo
+    exit
+    sleep 2
+fi
+
+echo '
+#!/bin/bash
+
+#######################################################################################
+# remove old build_'${@}' folder if it exists
+
+if [ -d build_'${@}' ]
+    then
+    rm -r build_'${@}'
+fi
+
+#######################################################################################
+# remove old '${@}' file if it exists
+
+if [ -e '${@}' ]
+    then
+    rm '${@}'
+fi
+
+#######################################################################################
+# make new build_'${@}' folder
+
+mkdir build_'${@}' && cd build_'${@}'
+
+#######################################################################################
+# build
+
+cmake .. && make clean && make
+
+#######################################################################################
+# move '${@}' and remove build_'${@}' folder
+
+if [ -e '${@}' ]
+    then
+    mv '${@}' ..
+fi
+
+cd .. && rm -r build_'${@}'
+
+#######################################################################################
+# run '${@}'
+
+if [ -e '${@}' ]
+    then
+    /opt/playSuccess/playSuccess.sh && clear
+    echo BUILDED SUCCESSFULY
+    echo --------------------------- && echo
+
+    ./'${@}'
+    
+    echo && echo ---------------------------
+    echo FINISHED && echo
+else
+    echo && echo UNSUCCESSFULY !!! && echo
+    /opt/playError/playError.sh
+fi
+
+#######################################################################################
+# Created automatically
+# GitHub   : https://github.com/bunyamintamar/ProjectCreator.git
+' > build_${@}.sh
+chmod +x build_${@}.sh
+echo  'build_'${@}'.sh created'
