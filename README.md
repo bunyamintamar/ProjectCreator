@@ -1,6 +1,4 @@
 # PROJECT CREATOR
-You can create a **hello world** and a **unit test** project  
-
 `createTest` creates a unit test project  
 --> CMakelists.txt  
 --> test.cpp  
@@ -11,13 +9,11 @@ You can create a **hello world** and a **unit test** project
 --> hello.cpp  
 --> build_hello.sh  
 
-* * *
+`createClass` creates a class  
+--> myClass.h  
+--> myClass.cpp  
 
-# HOW TO INSTALL?
-write command below in terminal  
-```bash
-git clone https://github.com/bunyamintamar/ProjectCreator.git
-cd ProjectCreator/
-chmod +x install_projectCreator.sh
-./install_projectCreator.sh
-```
+`createBuilder` creates a builder script  
+--> build_hello.sh  
+
+* * *
